@@ -3,20 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Flip & Find</title>
-
+ 
 </head>
 <body>
-
-        <p>Tijd over: <span id="tijd">60</span> sec</p>
-        <p>Fouten: <span id="fouten">0</span></p>
-        <p>Punten: <span id="punten">0</span></p>
-        <p>High Score: <span id="high-score">0</span></p>
-         <li><a href="#home">Home</a></li>
-      <li><a href="#playlist">Playlist</a></li>
-      <li><a href="#formulier">Formulier</a></li>
-      <li><a href="#contact-pagina">Contact</a></li>
-    </ul>
-    </div>
-    
-
+ 
+<h1>Flip & Find</h1>
+<p>Tijd: <span id="tijd">60</span>s | Fouten: <span id="fouten">0</span></p>
+ 
+<div id="bord"></div>
+<p id="bericht"></p>
+ 
+<button onclick="startSpel()">Nieuw spel</button>
+ 
+<script>
+let symbolen = ['🎮','🚀','⚡','🔥','💎','🎧','🎸','💻', '🎮','🚀','⚡','🔥','💎','🎧','🎸','💻'];
+ 
+let eerste = null;
+let tweede = null;
+let wacht = false;
+let paren = 0;
+let fouten = 0;
+let tijd = 60;
+let timer;
+ 
+ 
+function startSpel() {
+    clearInterval(timer);
+    eerste = null;
+    tweede = null;
+    wacht = false;
+    paren = 0;
+    fouten = 0;
+    tijd = 60;
+   
+    document.getElementById('fouten').innerText = 0;
+    document.getElementById('tijd').innerText = 60;
+    document.getElementById('bericht').innerText = '';
+    document.getElementById('bord').innerHTML = '';
+ 
 }
