@@ -81,95 +81,15 @@ function aftellen() {
     document.querySelector("#bericht").textContent = "Tijd is om! Probeer het opnieuw.";
   }
 }
-
 function klikKaart(kaart) {
+ 
+if (pauze || wachten || kaart.classList.contains("open")) {
 
-  if (pauze || wachten || kaart.classList.contains("open")) {
-    return;
-  }
-  kaart.classList.add("open");
-  kaart.textContent = kaart.dataset.symbool;
+  return;
 
-  if (eersteKaart == null) {
-    eersteKaart = kaart;
-    return;
-  }
-  zetten++;
-  document.querySelector("#zetten").textContent = zetten;
-
-  if (eersteKaart.dataset.symbool == kaart.dataset.symbool) {
-  
-    eersteKaart.classList.add("gevonden");
-    kaart.classList.add("gevonden");
-    eersteKaart = null;
-    paren++;
-
-    if (paren == kaartenPerLevel[level] / 2) {
-      clearInterval(timer);
-      gewonnen();
-    }
-  } else {
-    wachten = true;
-    let kaart1 = eersteKaart;
-    eersteKaart = null;
-
-    setTimeout(function () {
-      kaart1.classList.remove("open");
-      kaart.classList.remove("open");
-      kaart1.textContent = "?";
-      kaart.textContent = "?";
-      wachten = false;
-    }, 1000);
-  }
 }
+ 
+kaart.classList.add("open");
 
-function gewonnen() {
-  let score = paren * 100 + tijd * 10;
-  document.querySelector("#bericht").textContent = "Level gehaald! Je score is " + score;
-  pauzeKnop.hidden = true;
-
-  if (level < 5) {
-    volgendeKnop.hidden = false;
-  }
-
-  if (score > Number(localStorage.getItem("score"))) {
-    localStorage.setItem("score", score);
-  }
-  if (level > Number(localStorage.getItem("level"))) {
-    localStorage.setItem("level", level);
-  }
-
-  toonRecords();
+kaart.textContent = kaart.dataset.symbool;
 }
-
-let levelKnoppen = document.querySelectorAll(".levelKnop");
-for (let i = 0; i < levelKnoppen.length; i++) {
-  levelKnoppen[i].onclick = function () {
-    startLevel(Number(levelKnoppen[i].dataset.level));
-  };
-}
-
-pauzeKnop.onclick = function () {
-  if (pauze) {
-    pauze = false;
-    pauzeKnop.textContent = "Pauze";
-    document.querySelector("#bericht").textContent = "";
-  } else {
-    pauze = true;
-    pauzeKnop.textContent = "Verder";
-    document.querySelector("#bericht").textContent = "Pauze";
-  }
-};
-
-volgendeKnop.onclick = function () {
-  startLevel(level + 1);
-};
-
-document.querySelector("#terugKnop").onclick = function () {
-  clearInterval(timer);
-  document.querySelector("#spelPagina").hidden = true;
-  document.querySelector("#homePagina").hidden = false;
-  toonRecords();
-};
-
-toonRecords();
