@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flip &amp; Find</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <section id="homePagina">
+    <img class="logo" src="images/logo.png" alt="Flip & Find logo">
+    <p>Vind alle paren en haal een hoge score!</p>
+
+    <div class="record">
+      <p>Hoogste score: <span id="hoogsteScore">0</span></p>
+      <p>Hoogste level: <span id="hoogsteLevel">1</span></p>
+    </div>
+
+    <h2>Kies een level</h2>
+    <button class="levelKnop" data-level="1">Level 1 - 4 kaarten</button>
+    <button class="levelKnop" data-level="2">Level 2 - 8 kaarten</button>
+    <button class="levelKnop" data-level="3">Level 3 - 12 kaarten</button>
+    <button class="levelKnop" data-level="4">Level 4 - 20 kaarten</button>
+    <button class="levelKnop" data-level="5">Level 5 - 24 kaarten</button>
+  </section>
+
+  <section id="spelPagina" hidden>
+    <img class="logo" src="images/logo.png" alt="Flip & Find logo">
+    <h1 id="levelTitel">Level 1</h1>
+
+    <div class="record">
+      <p>Zetten: <span id="zetten">0</span></p>
+      <p>Tijd: <span id="tijd">60</span> seconden</p>
+    </div>
+
+    <div id="bord"></div>
+    <p id="bericht"></p>
+
+    <button id="pauzeKnop">Pauze</button>
+    <button id="volgendeKnop" hidden>Volgend level</button>
+    <button id="terugKnop">Terug naar levels</button>
+  </section>
+
+</body>
+</html>
