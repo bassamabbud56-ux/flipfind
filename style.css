@@ -1,0 +1,58 @@
+body {
+  background-color: #120b2e;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+}
+
+.logo {
+  width: 120px;
+}
+
+button {
+  background-color: #29205f;
+  color: white;
+  padding: 10px;
+}
+button{
+    display:block;
+    margin: 15px;
+    width: 30%;
+}
+button:first-child{
+    background: #29205f;
+    color: white;
+}
+button:nth-child(2){
+    background: #29205f;
+    color: white;
+}
+button:nth-child(3){
+    background: #29205f;
+    color: white;
+}
+button:nth-child(4){
+    background: #29205f;
+    color: white;
+}
+button:nth-child(5){
+    background: #29205f;
+    color: white;
+}
+
+#bord {
+  display: grid;
+  grid-template-columns: 65px 65px 65px 65px;
+  gap: 8px;
+  justify-content: center;
+}
+
+.kaart {
+  height: 65px;
+  font-size: 25px;
+  background-color: #182f66;
+}
+
+.kaart.gevonden {
+  background-color: #c6a4d8;
+}
