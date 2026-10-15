@@ -13,31 +13,37 @@ button {
   background-color: #29205f;
   color: white;
   padding: 10px;
+  width: 200px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;  
 }
-button{
-    display:block;
-    margin: 15px;
-    width: 30%;
+.levelKnop {
+  display: block;
+  width: 250px;
+  margin: 10px auto;
 }
-button:first-child{
-    background: #29205f;
-    color: white;
+
+#levels button {
+  display: block;
+  width: 150%;
+  margin: 15px auto;
 }
-button:nth-child(2){
-    background: #29205f;
-    color: white;
+
+.spelKnoppen {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
-button:nth-child(3){
-    background: #29205f;
-    color: white;
+
+.spelKnoppen button {
+  width: auto;
+  margin: 0;
 }
-button:nth-child(4){
-    background: #29205f;
-    color: white;
-}
-button:nth-child(5){
-    background: #29205f;
-    color: white;
+
+[hidden] {
+  display: none;
 }
 
 #bord {
@@ -48,7 +54,9 @@ button:nth-child(5){
 }
 
 .kaart {
+  width: 65px;
   height: 65px;
+  padding: 0;
   font-size: 25px;
   background-color: #182f66;
 }
