@@ -42,9 +42,6 @@ button {
   margin: 0;
 }
 
-[hidden] {
-  display: none;
-}
 
 #bord {
   display: grid;
