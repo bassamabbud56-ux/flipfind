@@ -1,18 +1,19 @@
 const symbolen = ["🎮", "🚀", "⚡", "🔥", "💎", "🎧", "🎸", "💻", "🌈", "🦊", "🍕", "👾"];
+const kaartenPerLevel = [0, 4, 8, 12, 20, 24];
 
-const kaartenPerLevel = { 1: 4, 2: 8, 3: 12, 4: 20, 5: 24 };
+const bord = document.querySelector("#bord");
+const bericht = document.querySelector("#bericht");
+const pauzeKnop = document.querySelector("#pauzeKnop");
+const volgendeKnop = document.querySelector("#volgendeKnop");
 
-let eersteKaart = null; 
-let wachten = false;   
-let pauze = false;      
+let eersteKaart = null;
+let wachten = false;
+let pauze = false;
 let zetten = 0;
 let paren = 0;
 let tijd = 0;
 let level = 1;
 let timer;
-
-let pauzeKnop = document.querySelector("#pauzeKnop");
-let volgendeKnop = document.querySelector("#volgendeKnop");
 
 function toonRecords() {
   document.querySelector("#hoogsteScore").textContent = localStorage.getItem("score") || 0;
@@ -32,44 +33,39 @@ function startLevel(nieuwLevel) {
   pauzeKnop.hidden = false;
   volgendeKnop.hidden = true;
 
-  let aantalParen = kaartenPerLevel[level] / 2;
-  let gekozen = symbolen.slice(0, aantalParen);
-  let kaarten = gekozen.concat(gekozen);
+  const aantalParen = kaartenPerLevel[level] / 2;
+  const parenSymbolen = symbolen.slice(0, aantalParen);
+  const kaarten = parenSymbolen.concat(parenSymbolen);
 
   kaarten.sort(function () {
     return Math.random() - 0.5;
   });
 
   tijd = 30 + aantalParen * 15;
-
   document.querySelector("#levelTitel").textContent = "Level " + level;
   document.querySelector("#zetten").textContent = zetten;
   document.querySelector("#tijd").textContent = tijd;
-  document.querySelector("#bericht").textContent = "";
-
+  bericht.textContent = "";
   document.querySelector("#homePagina").hidden = true;
   document.querySelector("#spelPagina").hidden = false;
-
-  let bord = document.querySelector("#bord");
   bord.innerHTML = "";
 
-  for (let i = 0; i < kaarten.length; i++) {
-    let kaart = document.createElement("button");
+  kaarten.forEach(function (symbool) {
+    const kaart = document.createElement("button");
     kaart.className = "kaart";
     kaart.textContent = "?";
-    kaart.dataset.symbool = kaarten[i];
+    kaart.dataset.symbool = symbool;
     kaart.onclick = function () {
       klikKaart(kaart);
     };
     bord.appendChild(kaart);
-  }
+  });
+
   timer = setInterval(aftellen, 1000);
 }
-function aftellen() {
 
-  if (pauze) {
-    return;
-  }
+function aftellen() {
+  if (pauze) return;
 
   tijd--;
   document.querySelector("#tijd").textContent = tijd;
@@ -78,18 +74,88 @@ function aftellen() {
     clearInterval(timer);
     wachten = true;
     pauzeKnop.hidden = true;
-    document.querySelector("#bericht").textContent = "Tijd is om! Probeer het opnieuw.";
+    bericht.textContent = "Tijd is om! Probeer het opnieuw.";
   }
 }
+
 function klikKaart(kaart) {
- 
-if (pauze || wachten || kaart.classList.contains("open")) {
+  if (pauze || wachten || kaart.classList.contains("open")) return;
 
-  return;
+  kaart.classList.add("open");
+  kaart.textContent = kaart.dataset.symbool;
 
+  if (eersteKaart === null) {
+    eersteKaart = kaart;
+    return;
+  }
+
+  zetten++;
+  document.querySelector("#zetten").textContent = zetten;
+
+  if (eersteKaart.dataset.symbool === kaart.dataset.symbool) {
+    eersteKaart.classList.add("gevonden");
+    kaart.classList.add("gevonden");
+    eersteKaart = null;
+    paren++;
+
+    if (paren === kaartenPerLevel[level] / 2) {
+      clearInterval(timer);
+      gewonnen();
+    }
+  } else {
+    wachten = true;
+    const kaart1 = eersteKaart;
+    eersteKaart = null;
+
+    setTimeout(function () {
+      kaart1.classList.remove("open");
+      kaart.classList.remove("open");
+      kaart1.textContent = "?";
+      kaart.textContent = "?";
+      wachten = false;
+    }, 1000);
+  }
 }
- 
-kaart.classList.add("open");
 
-kaart.textContent = kaart.dataset.symbool;
+function gewonnen() {
+  const score = paren * 100 + tijd * 10;
+  bericht.textContent = "Level gehaald! Je score is " + score;
+  pauzeKnop.hidden = true;
+  volgendeKnop.hidden = level === 5;
+
+  if (level === 5) bericht.textContent += " Je hebt alle levels gehaald!";
+
+  if (score > Number(localStorage.getItem("score") || 0)) {
+    localStorage.setItem("score", score);
+  }
+
+  if (level > Number(localStorage.getItem("level") || 0)) {
+    localStorage.setItem("level", level);
+  }
+
+  toonRecords();
 }
+
+document.querySelectorAll(".levelKnop").forEach(function (knop) {
+  knop.onclick = function () {
+    startLevel(Number(knop.dataset.level));
+  };
+});
+
+pauzeKnop.onclick = function () {
+  pauze = !pauze;
+  pauzeKnop.textContent = pauze ? "Verder" : "Pauze";
+  bericht.textContent = pauze ? "Pauze" : "";
+};
+
+volgendeKnop.onclick = function () {
+  startLevel(level + 1);
+};
+
+document.querySelector("#terugKnop").onclick = function () {
+  clearInterval(timer);
+  document.querySelector("#spelPagina").hidden = true;
+  document.querySelector("#homePagina").hidden = false;
+};
+
+toonRecords();
