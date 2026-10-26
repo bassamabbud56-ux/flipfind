@@ -9,7 +9,17 @@
 </head>
 <body>
 
-  <section id="homePagina">
+  <section id="startPagina">
+    <img class="logo" src="images/logo.png" alt="Flip & Find logo">
+
+    <h1>Welkom in Flip &amp; Find!</h1>
+    <p>Ben je klaar om te spelen?</p>
+
+    <button id="startKnop">Start</button>
+  </section>
+
+
+  <section id="homePagina" hidden>
     <img class="logo" src="images/logo.png" alt="Flip & Find logo">
 
     <div class="record">
@@ -18,15 +28,17 @@
     </div>
 
     <h2>Kies een level</h2>
-    <button class="levelKnop" data-level="1">Level 1 </button>
-    <button class="levelKnop" data-level="2">Level 2 </button>
-    <button class="levelKnop" data-level="3">Level 3 </button>
-    <button class="levelKnop" data-level="4">Level 4 </button>
-    <button class="levelKnop" data-level="5">Level 5 </button>
+
+    <button class="levelKnop" data-level="1">Level 1</button>
+    <button class="levelKnop" data-level="2">Level 2</button>
+    <button class="levelKnop" data-level="3">Level 3</button>
+    <button class="levelKnop" data-level="4">Level 4</button>
+    <button class="levelKnop" data-level="5">Level 5</button>
   </section>
 
   <section id="spelPagina" hidden>
     <img class="logo" src="images/logo.png" alt="Flip & Find logo">
+
     <h1 id="levelTitel">Level 1</h1>
 
     <div class="record">
@@ -37,11 +49,11 @@
     <div id="bord"></div>
     <p id="bericht"></p>
 
-<div class="spelKnoppen">
-  <button id="terugKnop">⏪️</button>
-  <button id="pauzeKnop">⏸️</button>
-  <button id="volgendeKnop" hidden>⏩️</button>
-</div>
+    <div class="spelKnoppen">
+      <button id="terugKnop">⏪️</button>
+      <button id="pauzeKnop">⏸️</button>
+      <button id="volgendeKnop" hidden>⏩️</button>
+    </div>
   </section>
 
 </body>
