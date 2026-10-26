@@ -1,3 +1,4 @@
+
 const goedGeluid = new Audio("sounds/goed.wav");
 const verliesGeluid = new Audio("sounds/khsar.wav");
 
@@ -11,13 +12,14 @@ const symbolen = [
 
 const kaartenPerLevel = [0, 4, 8, 12, 20, 24];
 
+const startPagina = document.querySelector("#startPagina");
+const startKnop = document.querySelector("#startKnop");
 const bord = document.querySelector("#bord");
 const bericht = document.querySelector("#bericht");
 const pauzeKnop = document.querySelector("#pauzeKnop");
 const volgendeKnop = document.querySelector("#volgendeKnop");
 const homePagina = document.querySelector("#homePagina");
 const spelPagina = document.querySelector("#spelPagina");
-
 
 let eersteKaart = null;
 let wachten = false;
@@ -44,6 +46,11 @@ function toonRecords() {
     localStorage.getItem("level") || 1;
 }
 
+startKnop.onclick = function () {
+  startPagina.hidden = true;
+  homePagina.hidden = false;
+};
+
 function startLevel(nieuwLevel) {
   clearInterval(timer);
 
@@ -54,7 +61,7 @@ function startLevel(nieuwLevel) {
   wachten = false;
   pauze = false;
 
-  pauzeKnop.textContent = "Pauze";
+  pauzeKnop.textContent = "⏸️";
   pauzeKnop.hidden = false;
   volgendeKnop.hidden = true;
 
@@ -107,12 +114,9 @@ function aftellen() {
 
   if (tijd <= 0) {
     clearInterval(timer);
-
     wachten = true;
     pauzeKnop.hidden = true;
-
     bericht.textContent = "Tijd is om! Probeer het opnieuw.";
-
     speelGeluid(verliesGeluid);
   }
 }
@@ -136,12 +140,9 @@ function klikKaart(kaart) {
   }
 
   zetten++;
-
   document.querySelector("#zetten").textContent = zetten;
 
-
   if (eersteKaart.dataset.symbool === kaart.dataset.symbool) {
- 
     speelGeluid(goedGeluid);
 
     eersteKaart.classList.add("gevonden");
@@ -150,13 +151,11 @@ function klikKaart(kaart) {
     eersteKaart = null;
     paren++;
 
-  
     if (paren === kaartenPerLevel[level] / 2) {
       clearInterval(timer);
       gewonnen();
     }
   } else {
-   
     speelGeluid(verliesGeluid);
 
     wachten = true;
@@ -179,11 +178,9 @@ function klikKaart(kaart) {
 function gewonnen() {
   const score = paren * 100 + tijd * 10;
 
-  bericht.textContent =
-    "Level gehaald! Je score is " + score;
+  bericht.textContent = "Level gehaald! Je score is " + score;
 
   pauzeKnop.hidden = true;
-
   volgendeKnop.hidden = level === 5;
 
   if (level === 5) {
@@ -201,7 +198,6 @@ function gewonnen() {
   toonRecords();
 }
 
-
 document.querySelectorAll(".levelKnop").forEach(function (knop) {
   knop.onclick = function () {
     const gekozenLevel = Number(knop.dataset.level);
@@ -218,7 +214,7 @@ pauzeKnop.onclick = function () {
 
   pauze = !pauze;
 
-  pauzeKnop.textContent = pauze ? "Verder" : "Pauze";
+  pauzeKnop.textContent = pauze ? "▶️" : "⏸️";
 
   bericht.textContent = pauze ? "Spel gepauzeerd" : "";
 };
@@ -228,7 +224,6 @@ volgendeKnop.onclick = function () {
     startLevel(level + 1);
   }
 };
-
 
 document.querySelector("#terugKnop").onclick = function () {
   clearInterval(timer);
@@ -240,8 +235,6 @@ document.querySelector("#terugKnop").onclick = function () {
   spelPagina.hidden = true;
   homePagina.hidden = false;
 
-  pauzeKnop.textContent = "Pauze";
+  pauzeKnop.textContent = "⏸️";
 };
-
-
 toonRecords();
