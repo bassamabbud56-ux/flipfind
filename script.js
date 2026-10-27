@@ -86,7 +86,7 @@ function startLevel(nieuwLevel) {
   spelPagina.hidden = false;
  
   bord.innerHTML = "";
- 
+  
   kaarten.forEach(function (symbool) {
     const kaart = document.createElement("button");
  
