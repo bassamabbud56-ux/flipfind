@@ -16,6 +16,20 @@ body {
   max-width: 80%;
 }
 
+button {
+  background-color: #29205f;
+  color: white;
+  padding: 10px;
+  width: 200px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #40348a;
+}
 
 #startPagina {
   min-height: 100vh;
@@ -34,27 +48,10 @@ body {
 
 #startPagina h1 {
   font-size: 32px;
-  margin: 10px 0;
 }
 
 #startPagina p {
   font-size: 18px;
-  margin: 0 0 10px;
-}
-
-button {
-  background-color: #29205f;
-  color: white;
-  padding: 10px;
-  width: 200px;
-  font-size: 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #40348a;
 }
 
 #startKnop {
@@ -82,7 +79,6 @@ button:hover {
 .spelKnoppen button {
   width: auto;
   min-width: 60px;
-  margin: 0;
 }
 
 #bord {
@@ -91,7 +87,6 @@ button:hover {
   gap: 8px;
   justify-content: center;
   margin: 20px auto;
-  padding: 0 10px;
 }
 
 .kaart {
