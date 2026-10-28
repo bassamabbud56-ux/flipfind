@@ -158,7 +158,6 @@ function klikKaart(kaart) {
     return;
   }
 
-  kaart.classList.add("open");
   kaart.textContent = kaart.dataset.symbool;
 
   if (eersteKaart === null) {
