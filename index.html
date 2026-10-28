@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -12,10 +11,18 @@
 
   <section id="startPagina">
     <img class="logo" src="images/logo.png" alt="Flip & Find logo">
-    <h1>Welkom in Flip &amp; Find!</h1>
-    <H2>Memoryspel waarin je kaarten omdraait, symbolen matcht en punten verdient.</H2>
-    <H3>Kies een level en behaal de hoogste score!</H3>
-    <p>Ben je klaar om te spelen?</p>
+
+    <div class="welkom-container">
+      <h1>Welkom in Flip &amp; Find!</h1>
+
+      <div class="welkom-tekst">
+        <p>Memoryspel waarin je kaarten omdraait.</p>
+        <p>Symbolen matcht en punten verdient.</p>
+        <p>Kies een level en behaal de hoogste score!</p>
+        <p>Ben je klaar om te spelen?</p>
+      </div>
+    </div>
+
     <button id="startKnop">Start</button>
   </section>
 
@@ -50,9 +57,10 @@
     <p id="bericht"></p>
 
     <div class="spelKnoppen">
-      <button id="terugKnop">⏪️</button>
-      <button id="pauzeKnop">⏸️</button>
-      <button id="volgendeKnop" hidden>⏩️</button>
+      <button id="terugKnop" title="Terug naar levels">⏪</button>
+      <button id="pauzeKnop" title="Pauzeren">⏸️</button>
+      <button id="volgendeKnop" title="Volgend level" hidden>⏩</button>
+      <button id="geluidKnop" title="Geluid uitzetten">🔊</button>
     </div>
   </section>
 
