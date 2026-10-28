@@ -1,7 +1,7 @@
 
 body {
-  background-color: #120b2e;
-  color: white;
+  background-color: #e5e0f1;
+  color: rgb(77, 44, 186);
   text-align: center;
   font-family: Arial, sans-serif;
   margin: 0;
@@ -14,10 +14,12 @@ body {
 .logo {
   width: 120px;
   max-width: 80%;
+  display: block;
+  margin: 0 auto 20px;
 }
 
 button {
-  background-color: #29205f;
+  background-color: #5c5390;
   color: white;
   padding: 10px;
   width: 200px;
@@ -28,7 +30,7 @@ button {
 }
 
 button:hover {
-  background-color: #40348a;
+  background-color: #a094e7;
 }
 
 #startPagina {
@@ -43,25 +45,52 @@ button:hover {
 }
 
 #startPagina .logo {
-  width: 180px;
+  width: 150px;
 }
 
-#startPagina h1 {
-  font-size: 32px;
+.welkom-container {
+  width: 360px;
+  max-width: 90%;
+  padding: 20px 15px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-#startPagina p {
+.welkom-container h1 {
+  font-size: 30px;
+  margin: 10px 0 20px;
+}
+
+.welkom-tekst {
+  border: 4px solid #78b6f4;
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.welkom-tekst p {
   font-size: 18px;
+  line-height: 1.5;
+  margin: 15px 0;
 }
 
 #startKnop {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
-.levelKnop {
-  display: block;
-  width: 250px;
+#homePagina {
+  width: 440px;
   max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#homePagina .levelKnop {
+  display: block;
+  width: 100%;
+  max-width: 260px;
   margin: 10px auto;
 }
 
@@ -69,50 +98,70 @@ button:hover {
   margin: 20px 0;
 }
 
-.spelKnoppen {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
+#spelPagina {
+  width: 440px;
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.spelKnoppen button {
-  width: auto;
-  min-width: 60px;
+#spelPagina .logo {
+  margin-bottom: 20px;
 }
 
 #bord {
   display: grid;
-  grid-template-columns: repeat(4, 65px);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  justify-content: center;
+  max-width: 300px;
   margin: 20px auto;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
-.kaart {
-  width: 65px;
-  height: 65px;
+#bord .kaart {
+  width: 100%;
+  aspect-ratio: 1;
   padding: 0;
-  font-size: 25px;
-  background-color: #182f66;
+  font-size: 24px;
+  background-color: #78b6f4;
+  border: none;
 }
 
-.kaart.gevonden {
+#bord .kaart.gevonden {
   background-color: #c6a4d8;
+}
+
+.spelKnoppen {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.spelKnoppen button {
+  width: auto;
+  min-width: 55px;
 }
 
 @media (max-width: 380px) {
   #bord {
-    grid-template-columns: repeat(4, 55px);
     gap: 6px;
   }
 
-  .kaart {
-    width: 55px;
-    height: 55px;
+  #startPagina .logo {
+    width: 120px;
   }
 
-  #startPagina h1 {
+  .welkom-container h1 {
     font-size: 26px;
+  }
+
+  .welkom-tekst p {
+    font-size: 16px;
   }
 }
