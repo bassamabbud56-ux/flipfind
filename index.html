@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -17,7 +18,7 @@
 
       <div class="welkom-tekst">
         <p>Memoryspel waarin je kaarten omdraait.</p>
-        <p>Symbolen matcht en punten verdient.</p>
+        <p>Vind dezelfde symbolen en verdien punten.</p>
         <p>Kies een level en behaal de hoogste score!</p>
         <p>Ben je klaar om te spelen?</p>
       </div>
@@ -41,6 +42,20 @@
     <button class="levelKnop" data-level="3">Level 3</button>
     <button class="levelKnop" data-level="4">Level 4</button>
     <button class="levelKnop" data-level="5">Level 5</button>
+
+    <button id="highscoresKnop">🏆 Hoogste scores</button>
+  </section>
+
+  <section id="highscoresPagina" hidden>
+    <img class="logo" src="images/logo.png" alt="Flip & Find logo">
+
+    <h1>🏆 Hoogste scores</h1>
+    <p>De beste 10 spelers van Flip &amp; Find</p>
+
+    <ol id="highscoreLijst"></ol>
+    <p id="geenScores">Er zijn nog geen scores opgeslagen.</p>
+
+    <button id="terugHighscoresKnop">Terug naar levels</button>
   </section>
 
   <section id="spelPagina" hidden>
@@ -50,11 +65,28 @@
 
     <div class="record">
       <p>Zetten: <span id="zetten">0</span></p>
-      <p>Tijd: <span id="tijd">60</span> seconden</p>
+      <p>Tijd: <span id="tijd">15</span> seconden</p>
     </div>
 
     <div id="bord"></div>
-    <p id="bericht"></p>
+    <p id="bericht" aria-live="polite"></p>
+
+    <div id="scoreOpslaan" hidden>
+      <h2>🏆 Sla je score op</h2>
+      <p id="eindScore"></p>
+
+      <label for="spelerNaam">Jouw naam:</label>
+      <input
+        id="spelerNaam"
+        type="text"
+        placeholder="Vul je naam in"
+        maxlength="20"
+        autocomplete="nickname"
+      >
+
+      <button id="scoreOpslaanKnop">Naam en score opslaan</button>
+      <p id="opslagBericht" aria-live="polite"></p>
+    </div>
 
     <div class="spelKnoppen">
       <button id="terugKnop" title="Terug naar levels">⏪</button>
