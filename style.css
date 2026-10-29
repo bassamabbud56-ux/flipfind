@@ -1,4 +1,3 @@
-
 body {
   background-color: #e5e0f1;
   color: rgb(77, 44, 186);
@@ -6,18 +5,18 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
 }
-
+ 
 [hidden] {
   display: none !important;
 }
-
+ 
 .logo {
   width: 120px;
   max-width: 80%;
   display: block;
   margin: 0 auto 20px;
 }
-
+ 
 button {
   background-color: #5c5390;
   color: white;
@@ -28,16 +27,12 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-
+ 
 button:hover {
   background-color: #a094e7;
 }
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
+ 
+ 
 #startPagina {
   min-height: 100vh;
   display: flex;
@@ -48,11 +43,11 @@ button:disabled {
   padding: 20px;
   box-sizing: border-box;
 }
-
+ 
 #startPagina .logo {
   width: 150px;
 }
-
+ 
 .welkom-container {
   width: 360px;
   max-width: 90%;
@@ -60,32 +55,31 @@ button:disabled {
   text-align: center;
   box-sizing: border-box;
 }
-
+ 
 .welkom-container h1 {
   font-size: 30px;
   margin: 10px 0 20px;
 }
-
+ 
 .welkom-tekst {
   border: 4px solid #78b6f4;
   border-radius: 8px;
   padding: 15px;
   box-sizing: border-box;
 }
-
+ 
 .welkom-tekst p {
   font-size: 18px;
   line-height: 1.5;
   margin: 15px 0;
 }
-
+ 
 #startKnop {
   margin-top: 5px;
 }
-
-#homePagina,
-#spelPagina,
-#highscoresPagina {
+ 
+ 
+#homePagina {
   width: 440px;
   max-width: 90%;
   margin: 20px auto;
@@ -93,95 +87,59 @@ button:disabled {
   box-sizing: border-box;
   text-align: center;
 }
-
+ 
 #homePagina .levelKnop {
   display: block;
   width: 100%;
   max-width: 260px;
   margin: 10px auto;
 }
-
-#highscoresKnop {
-  margin-top: 15px;
-  max-width: 100%;
-}
-
+ 
+ 
 .record {
   margin: 20px 0;
 }
-
+ 
+ 
+#spelPagina {
+  width: 440px;
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+ 
 #spelPagina .logo {
   margin-bottom: 20px;
 }
-
+ 
+ 
 #bord {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   max-width: 300px;
   margin: 20px auto;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
-
+ 
 #bord .kaart {
   width: 100%;
-  min-width: 0;
   aspect-ratio: 1;
   padding: 0;
   font-size: 24px;
   background-color: #78b6f4;
+  border: none;
 }
-
+ 
 #bord .kaart.gevonden {
   background-color: #c6a4d8;
 }
-
-#scoreOpslaan {
-  margin: 20px auto;
-  padding: 15px;
-  border-radius: 10px;
-  max-width: 340px;
-  box-sizing: border-box;
-}
-
-#scoreOpslaan input {
-  display: block;
-  width: 100%;
-  max-width: 260px;
-  box-sizing: border-box;
-  margin: 12px auto;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #a094e7;
-  border-radius: 5px;
-}
-
-#scoreOpslaan button {
-  width: 100%;
-  max-width: 260px;
-  font-size: 17px;
-}
-
-#opslagBericht {
-  overflow-wrap: anywhere;
-}
-
-#highscoreLijst {
-  text-align: left;
-  max-width: 360px;
-  margin: 20px auto;
-  padding-left: 35px;
-}
-
-#highscoreLijst li {
-  padding: 10px 5px;
-  border-bottom: 1px solid #c6a4d8;
-  overflow-wrap: anywhere;
-}
-
-#geenScores {
-  color: #5c5390;
-}
-
+ 
+ 
 .spelKnoppen {
   display: flex;
   justify-content: center;
@@ -189,32 +147,27 @@ button:disabled {
   flex-wrap: wrap;
   margin-top: 20px;
 }
-
+ 
 .spelKnoppen button {
   width: auto;
   min-width: 55px;
 }
-
+ 
+ 
 @media (max-width: 380px) {
   #bord {
     gap: 6px;
   }
-
+ 
   #startPagina .logo {
     width: 120px;
   }
-
+ 
   .welkom-container h1 {
     font-size: 26px;
   }
-
+ 
   .welkom-tekst p {
     font-size: 16px;
-  }
-
-  #spelPagina,
-  #homePagina,
-  #highscoresPagina {
-    padding: 12px;
   }
 }
