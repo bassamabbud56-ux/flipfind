@@ -33,6 +33,11 @@ button:hover {
   background-color: #a094e7;
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 #startPagina {
   min-height: 100vh;
   display: flex;
@@ -78,7 +83,9 @@ button:hover {
   margin-top: 5px;
 }
 
-#homePagina {
+#homePagina,
+#spelPagina,
+#highscoresPagina {
   width: 440px;
   max-width: 90%;
   margin: 20px auto;
@@ -94,17 +101,13 @@ button:hover {
   margin: 10px auto;
 }
 
-.record {
-  margin: 20px 0;
+#highscoresKnop {
+  margin-top: 15px;
+  max-width: 100%;
 }
 
-#spelPagina {
-  width: 440px;
-  max-width: 90%;
-  margin: 20px auto;
-  padding: 20px;
-  box-sizing: border-box;
-  text-align: center;
+.record {
+  margin: 20px 0;
 }
 
 #spelPagina .logo {
@@ -113,26 +116,70 @@ button:hover {
 
 #bord {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
   max-width: 300px;
   margin: 20px auto;
-  border: none;
-  outline: none;
-  box-shadow: none;
 }
 
 #bord .kaart {
   width: 100%;
+  min-width: 0;
   aspect-ratio: 1;
   padding: 0;
   font-size: 24px;
   background-color: #78b6f4;
-  border: none;
 }
 
 #bord .kaart.gevonden {
   background-color: #c6a4d8;
+}
+
+#scoreOpslaan {
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 340px;
+  box-sizing: border-box;
+}
+
+#scoreOpslaan input {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  box-sizing: border-box;
+  margin: 12px auto;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #a094e7;
+  border-radius: 5px;
+}
+
+#scoreOpslaan button {
+  width: 100%;
+  max-width: 260px;
+  font-size: 17px;
+}
+
+#opslagBericht {
+  overflow-wrap: anywhere;
+}
+
+#highscoreLijst {
+  text-align: left;
+  max-width: 360px;
+  margin: 20px auto;
+  padding-left: 35px;
+}
+
+#highscoreLijst li {
+  padding: 10px 5px;
+  border-bottom: 1px solid #c6a4d8;
+  overflow-wrap: anywhere;
+}
+
+#geenScores {
+  color: #5c5390;
 }
 
 .spelKnoppen {
@@ -163,5 +210,11 @@ button:hover {
 
   .welkom-tekst p {
     font-size: 16px;
+  }
+
+  #spelPagina,
+  #homePagina,
+  #highscoresPagina {
+    padding: 12px;
   }
 }
